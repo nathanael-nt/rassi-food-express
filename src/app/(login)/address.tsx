@@ -1,4 +1,4 @@
-import BoxInput from "@/src/components/Boxinput";
+import BoxInput from "@/src/components/BoxInput";
 import Button from "@/src/components/Button";
 import { useRouter } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
