@@ -60,34 +60,45 @@ export const lojas = [
         status: false,
         nome: "Komiketo Sanduicheria",
         endereco: "Av. T4 - Serrinha",
-        logotipo: require("../assets/loja01.png")
+        logotipo: "loja01"
     },
     {
         id: 2,
-        status: true,
+        status: false,
         nome: "Coco Bambu",
         endereco: "Flamboyant Shopping Center",
-        logotipo: require("../assets/loja02.png")
+        logotipo: "loja02"
     },
     {
         id: 3,
         status: false,
         nome: "Kid Abelha Sanduicheria",
         endereco: "Praça Walter  Santos",
-        logotipo: require("../assets/loja03.png")
+        logotipo: "loja03"
     },
     {
         id: 4,
         status: false,
         nome: "1008 Bar e Restaurante",
         endereco: "Al. Leopoldo de Bulhões",
-        logotipo: require("../assets/loja04.png")
+        logotipo: "loja04"
     },
     {
         id: 5,
-        status: true,
+        status: false,
         nome: "Rafa’s Sanduicheria",
         endereco: "Jardim América",
-        logotipo: require("../assets/loja05.png")
+        logotipo: "loja05"
     }
 ];
+
+export const imageLogo = {
+    banner1: require("../assets/banner1.png"),
+    banner2: require("../assets/banner2.png"),
+    banner3: require("../assets/banner3.png"),
+    loja01: require("../assets/loja01.png"),
+    loja02: require("../assets/loja02.png"),
+    loja03: require("../assets/loja03.png"),
+    loja04: require("../assets/loja04.png"),
+    loja05: require("../assets/loja05.png")
+};
