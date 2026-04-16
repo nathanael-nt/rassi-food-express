@@ -36,4 +36,4 @@ export default function UpdPerfil(props: UpdPerfilProps) {
             </View>
         </View>
     );
-}
+} 
