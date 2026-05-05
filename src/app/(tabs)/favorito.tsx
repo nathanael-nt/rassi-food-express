@@ -1,7 +1,5 @@
 import Lojas from "@/src/components/Lojas";
 import { Text, View } from "react-native";
-import { lojas } from "../../constants/data.js";
-
 
 export default function Favorito() {
     return (
@@ -12,7 +10,7 @@ export default function Favorito() {
                 </Text>
             </View>
             <View className="flex-1 w-full mt-10">
-                <Lojas data={lojas} />
+                <Lojas somenteFavoritos={true} />
             </View>
         </View>
     );

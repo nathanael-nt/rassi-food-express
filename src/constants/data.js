@@ -167,7 +167,47 @@ export const lojas = [
         endereco: "Jardim América - Goiânia - GO",
         logotipo: "loja05",
         taxa: 12.00,
-        cardapio: []
+        cardapio: [
+            {
+                idCategoria: 1,
+                categoria: "Ofertas",
+                itens: []
+            },
+            {
+                idCategoria: 2,
+                categoria: "Mais Pedidos",
+                itens: []
+            },
+            {
+                idCategoria: 3,
+                categoria: "Combos",
+                itens: []
+            }
+        ]
+    }
+];
+
+export const oldPedidos = [
+    {
+        id: 0,
+        idLoja: 0,
+        nomeLoja: "",
+        logoLoja: "",
+        total: 0.00,
+        status: false,
+    }
+];
+
+export const pedidos = [
+    {
+        id: 1000,
+        idProduto: 0,
+        nomeProd: "",
+        descProd: "",
+        fotoProd: "",
+        quantidade: 0,
+        total: 0.00,
+        status: false,
     }
 ];
 

@@ -53,7 +53,7 @@ export default function TabsLayout() {
       }} />
 
     <Tabs.Screen
-      name="pedido"
+      name="pedidos"
       options={{
         tabBarLabel: () => null,
         tabBarIcon: ({ focused }) => (

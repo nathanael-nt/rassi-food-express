@@ -3,6 +3,7 @@ import { Image, Platform, Pressable, Text, View } from "react-native";
 import { imageAll } from "../constants/data";
 
 interface ProdutoProps {
+    lojaId: number
     idProduto: number
     nome: string
     descricao: string
@@ -15,20 +16,18 @@ export default function Produto(props: ProdutoProps) {
 
     const router = useRouter();
 
-        const handlePress = () => {
-            if (Platform.OS === 'web') {
-                (document.activeElement as HTMLElement)?.blur();
+    const handlePress = () => {
+        if (Platform.OS === 'web') {
+            (document.activeElement as HTMLElement)?.blur();
+        }
+        router.push({
+            pathname: '../pedido',
+            params: {
+                idLoja: props.lojaId,
+                idProduto: props.idProduto
             }
-            router.push({
-                pathname: '../detalhes',
-                params: {
-                    id: props.idProduto,
-                    nome: props.nome,
-                    descricao: props.descricao,
-                    valor: props.valor
-                }
-            });
-        };
+        });
+    };
 
     const refProd: any = imageAll;
 
