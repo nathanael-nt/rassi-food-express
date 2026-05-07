@@ -5,7 +5,7 @@ import icons from '@/src/constants/icons';
 import { useLojaStore } from '@/src/store/useLojaStore';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { Image, Pressable, Text, TextInput, View } from "react-native";
+import { Image, Platform, Pressable, Text, TextInput, View } from "react-native";
 
 export default function Pedido() {
 
@@ -51,6 +51,23 @@ export default function Pedido() {
 
     const refProd: any = imageAll;
 
+    function RealizarPedido() {
+
+        if (Platform.OS === 'web') {
+            (document.activeElement as HTMLElement)?.blur();
+
+            router.push({
+                pathname: './detalhes',
+                params: {
+                    idLoja: idLoja,
+                    idProduto: idProduto,
+                    quantidade: quantidade
+                }
+            });
+        };
+
+    }
+
     return (
         <View className="flex-1 items-center bg-white mx-8 mb-10">
             <View className="bg-white w-screen">
@@ -80,7 +97,7 @@ export default function Pedido() {
                 <Contador quantidade={quantidade} setQuantidade={setQuantidade} />
             </View>
             <View className="flex-1 w-full justify-end mb-10 bg-white">
-                <Button label="Adicionar" url="./detalhes"></Button>
+                <Button label="Adicionar" funcao={RealizarPedido}></Button>
             </View>
         </View >
     );

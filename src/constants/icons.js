@@ -17,6 +17,7 @@ import logo02 from "../assets/logo02.png";
 import logout from "../assets/logout.png";
 import mais from "../assets/mais.png";
 import menos from "../assets/menos.png";
+import lixeira from "../assets/lixeira.png";
 
 export default { logo01, logo02, endereco, logout, dados, expandir, abahome, abafavorito, abapedidos, 
-    abaperfil, cart, favorito, favoritofull, banner4, banner5, banner7, back, mais, menos };
+    abaperfil, cart, favorito, favoritofull, banner4, banner5, banner7, back, mais, menos, lixeira };

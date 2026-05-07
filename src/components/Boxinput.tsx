@@ -1,19 +1,23 @@
-import { Text, TextInput, View } from "react-native";
+import { Text, TextInput, TextInputProps, View } from "react-native";
 
-interface BoxInputProps {
+interface BoxInputProps extends TextInputProps {
     label?: string
-    placeholder: string
     isPassword?: boolean
 }
 
-export default function BoxInput(props: BoxInputProps) {
+export default function BoxInput({ label, isPassword, ...rest }: BoxInputProps) {
     return (
-        <View className="pb-10">
-            <Text className="text-xl pb-2 font-bold">{props.label}</Text>
-            <TextInput className="text-2xl border-2 px-5 py-2 border-zinc-400 rounded-md bg-zinc-50"
-            placeholder={props.placeholder}
-            placeholderTextColor="#d4d4d8"
-            secureTextEntry={props.isPassword} />
+        <View className="w-full pb-6">
+            {label && (
+                <Text className="text-lg pb-1 font-semibold text-zinc-700">
+                    {label}
+                </Text>
+            )}
+            <TextInput className="text-xl border-2 px-4 py-3 border-zinc-300 rounded-xl bg-zinc-50 text-zinc-800 focus:border-blue-500"
+                placeholderTextColor="#A1A1AA"
+                secureTextEntry={isPassword}
+                {...rest}
+            />
         </View>
     );
 }

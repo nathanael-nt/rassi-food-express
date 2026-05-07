@@ -82,7 +82,7 @@ export default function LoginLayout() {
           <Image source={icons.logo01}
             style={{ width: 232, height: 42, marginTop: 10 }} />
         ),
-        headerShown: false,
+        //headerShown: false,
         headerTitleAlign: 'center',
         headerShadowVisible: false
       }}
