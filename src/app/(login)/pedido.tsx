@@ -49,7 +49,7 @@ export default function Pedido() {
 
     const valorProd = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", }).format(total);
 
-    const refProd: any = imageAll;
+    // const refProd: any = imageAll;
 
     function RealizarPedido() {
 
@@ -68,6 +68,8 @@ export default function Pedido() {
 
     }
 
+    const produtoOrigem = imageAll[produto.foto];
+
     return (
         <View className="flex-1 items-center bg-white mx-8 mb-10">
             <View className="bg-white w-screen">
@@ -78,7 +80,8 @@ export default function Pedido() {
             </View>
             <View>
                 <View className="flex-row items-center mt-10 bg-white">
-                    <Image source={refProd[produto.foto as string]} style={{ width: 82, height: 82, borderRadius: 50, backgroundColor: '#f59e0b' }} resizeMode="cover" />
+                    <Image source={typeof produtoOrigem === 'string' ? { uri: produtoOrigem }: produtoOrigem} 
+                           style={{ width: 82, height: 82, borderRadius: 50, backgroundColor: '#f59e0b' }} resizeMode="cover" />
                     <View className="flex-1 pl-5">
                         <Text numberOfLines={1} className="text-2xl font-bold text-zinc-500">{produto.nome}</Text>
                         <Text numberOfLines={2} className="text-xl text-justify font-normal text-zinc-400">{produto.descricao}</Text>

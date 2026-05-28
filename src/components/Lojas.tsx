@@ -1,8 +1,8 @@
 import { useRouter } from "expo-router";
 import { Image, Platform, Pressable, ScrollView, Text, View } from "react-native";
-import { imageAll } from '../constants/data';
 import icons from "../constants/icons";
 import { useLojaStore } from '../store/useLojaStore';
+import { imageAll } from "../constants/data";
 
 interface LojasProps {
     somenteFavoritos?: boolean;
@@ -22,7 +22,7 @@ export default function Lojas({ somenteFavoritos = false }: LojasProps) {
         router.push({ pathname: '../cardapio', params: { id: loja.id } });
     };
 
-    const refLogo: any = imageAll
+    // const refLogo: any = imageAll
 
     const dadosFiltrados = somenteFavoritos
         ? (lojas ?? []).filter(item => item.status)
@@ -41,11 +41,12 @@ export default function Lojas({ somenteFavoritos = false }: LojasProps) {
                     </View>
                 ) : (
                     dadosFiltrados.map((value: any, index: number) => {
+                        const imagemOrigem = imageAll[value.logotipo];
                         return (
                             <View key={value.id || index} className="flex-row items-center pt-3 bg-white">
                                 <Pressable className="flex-1 flex-row items-center pt-5 bg-white active:opacity-70" onPress={() => handlePress(value)}>
                                     <View className="rounded-2xl overflow-hidden">
-                                        <Image source={refLogo[value.logotipo]} style={{ width: 82, height: 82 }} />
+                                        <Image source={ typeof imagemOrigem === 'string' ? { uri: imagemOrigem }: imagemOrigem} style={{ width: 82, height: 82 }} />
                                     </View>
                                     <View className='flex-1 pl-2 mr-3'>
                                         <Text numberOfLines={1} className="text-xl font-bold text-zinc-500">{value.nome}</Text>

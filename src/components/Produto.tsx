@@ -2,6 +2,7 @@ import { useRouter } from "expo-router";
 import { Image, Platform, Pressable, Text, View } from "react-native";
 import { imageAll } from "../constants/data";
 
+
 interface ProdutoProps {
     lojaId: number
     idProduto: number
@@ -29,14 +30,16 @@ export default function Produto(props: ProdutoProps) {
         });
     };
 
-    const refProd: any = imageAll;
+    // const refProd: any = imageAll;
+
+    const produtoOrigem = imageAll[props.foto];
 
     const valorProd = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", }).format(props.valor);
 
     return (
         <Pressable className="flex-row active:opacity-70 pt-5" onPress={() => handlePress()}>
             <View className="rounded-2xl overflow-hidden">
-                <Image source={refProd[props.foto]} style={{ width: 82, height: 82 }} resizeMode="cover" />
+                <Image source={typeof produtoOrigem === 'string' ? { uri: produtoOrigem }: produtoOrigem} style={{ width: 82, height: 82 }} resizeMode="cover" />
             </View>
             <View className="flex-1 pl-5 justify-center bg-white">
                 <Text numberOfLines={1} className="text-xl font-bold text-zinc-500">{props.nome}</Text>

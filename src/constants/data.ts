@@ -101,7 +101,7 @@ export const lojas = [
                         nome: "Pizza Mussarela",
                         descricao: "Massa artesanal, recheio de mussarela. Server de 3 a 4 pessoas. Molho de tomate 100% natural e ingredientes selecionados",
                         valor: 30.00,
-                        foto: "produto1"
+                        foto: "produto4"
                     },
                     {
                         idProduto: 4,
@@ -211,16 +211,23 @@ export const pedidos = [
     }
 ];
 
-export const imageAll = {
+export const imageAll: Record<string, string | number> = {
     banner1: require("../assets/banner1.png"),
     banner2: require("../assets/banner2.png"),
     banner3: require("../assets/banner3.png"),
-    loja01: require("../assets/loja01.png"),
-    loja02: require("../assets/loja02.png"),
-    loja03: require("../assets/loja03.png"),
-    loja04: require("../assets/loja04.png"),
-    loja05: require("../assets/loja05.png"),
-    produto1: require("../assets/pizza.png"),
+    // loja01: "https://static.ifood-static.com.br/image/upload/t_high/logosgde/e6a135d1-4e37-461e-81c9-f5ed38818511/201906251302_ZvWv_i.jpg", //require("../assets/loja01.png"),
+    loja01: "https://static.ifood-static.com.br/image/upload/t_high/logosgde/571ae136-afc0-42e3-9d0f-68438da07c08/202502041616_De6i_d.jpg", //require("../assets/loja01.png"),
+    loja02: "https://static.ifood-static.com.br/image/upload/t_high/logosgde/45db57a0-5231-414f-97bd-223fd6382fc3/202104052038_575g_i.jpg", //require("../assets/loja02.png"),
+    // loja03: "https://static.ifood-static.com.br/image/upload/t_low/logosgde/00d448d2-f09f-405e-b819-6971a035b3fb/202101281546_h7cr_i.jpg", //require("../assets/loja03.png"),
+    loja03: "https://static.ifood-static.com.br/image/upload/t_high/logosgde/f97ed143-9e00-4a60-9425-a34babfdc740/202307052006_KkuM_i.jpg", //require("../assets/loja03.png"),
+    // loja04: "https://static.ifood-static.com.br/image/upload/t_high/logosgde/31a25225-c079-4bcc-a886-b2c0f0d42e22/202305202307_6Vmx_i.jpg", //require("../assets/loja04.png"),
+    loja04: "https://static.ifood-static.com.br/image/upload/t_low/logosgde/744ab696-8297-48b2-9b41-71b76cc0e5df/202307051535_mR9N_i.jpg", //require("../assets/loja04.png"),
+    loja05: "https://static.ifood-static.com.br/image/upload/t_high/logosgde/df8cb89f-e521-45d2-ad74-ceac53c387f7/202311170922_b4N5_i.jpg", //require("../assets/loja05.png"),
+    loja06: "https://static.ifood-static.com.br/image/upload/t_high/logosgde/d6abf47e-59e5-4b40-906b-7be3be95f38a/202602182012_5CD8.png", //require("../assets/loja01.png"),
+    // produto1: require("../assets/pizza.png"),
+    produto1: "https://institucional.ifood.com.br/wp-content/uploads/2023/10/CAPA-PIZZA-1024x692-1.webp", //require("../assets/pizza.png"),
     produto2: require("../assets/coca.png"),
-    produto3: require("../assets/salada.png")
+    produto3: require("../assets/salada.png"),
+    // produto4: require("../assets/salada.png")
+    produto4: "https://img.freepik.com/psd-premium/pizza-com-queijo-mozzarella-isolado-em-fundo-transparente-vista-superior_220739-59990.jpg?semt=ais_hybrid&w=740&q=80" //require("../assets/salada.png")
 };

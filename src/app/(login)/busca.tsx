@@ -1,6 +1,6 @@
 import Lojas from "@/src/components/Lojas";
 import { Text, View } from "react-native";
-import { lojas } from "../../constants/data.js";
+import { lojas } from "../../constants/data";
 
 
 export default function Busca() {
