@@ -1,15 +1,35 @@
 import BoxInput from "@/src/components/BoxInput";
 import Button from "@/src/components/Button";
+import { loadUserStore } from "@/src/store/loadUserStore";
 import { useRouter } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, View } from "react-native";
 
 export default function Login() {
 
-    const router = useRouter();
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [users, setUsers] = useState<Map<string, any>>(new Map());
+    const router = useRouter();
+
+    useEffect(() => {
+
+        const currentUsers = loadUserStore.getState().users;
+        if (currentUsers) {
+            const usersMap = new Map(
+                currentUsers.map((user: any) => [user.email, user])
+            );
+            setUsers(usersMap);
+        }
+        if (__DEV__ && currentUsers && currentUsers.length > 0) {
+            console.log("============ Usuários no AsyncStorage ============");
+            currentUsers.forEach((user: any) => {
+                console.log(`id: ${user.id} | Email: ${user.email} | Status: ${user.status}`);
+            });
+            console.log("==================================================");
+        }
+
+    }, []);
 
     const handlePress = () => {
         if (Platform.OS === 'web') {
@@ -40,9 +60,31 @@ export default function Login() {
             console.log(password)
         }
 
-        router.navigate('/home');
+        const usuarioValido = users.get(email);
 
+        if (usuarioValido && usuarioValido.senha === password) {
+
+            loadUserStore.getState().toggleUsers(usuarioValido.id);
+
+            const usersAtualizado = loadUserStore.getState().users;
+            const usuarioConectado = usersAtualizado.find((u: any) => u.id === usuarioValido.id);
+
+            if (__DEV__ && usuarioConectado) {
+                console.log("================ Usuário Conectado =================");
+                console.log(`id: ${usuarioConectado.id} | Email: ${usuarioConectado.email} | Status: ${usuarioConectado.status}`);
+                console.log("=================================================");
+            }
+
+            router.navigate('/home');
+        } else {
+            if (Platform.OS === 'web') {
+                window.alert("Erro: Usuário ou senha inválidos.");
+            } else {
+                Alert.alert("Erro de Acesso", "Usuário ou senha não encontrados.", [{ text: "OK" }]);
+            }
+        }
     }
+
     return (
         <KeyboardAvoidingView
             behavior="padding"
@@ -60,25 +102,25 @@ export default function Login() {
                         Acesse sua conta
                     </Text>
                 </View>
-                <View className=" w-full pt-10 mb-5">
+                <View className="w-full pt-10 mb-5">
                     <BoxInput
                         label="E-mail"
                         placeholder="Digite seu melhor e-mail"
-                        onChangeText={setEmail}  //onChangeText={(value) => setEmail(value)}
+                        onChangeText={setEmail}
                         value={email}
                     />
                     <BoxInput
                         label="Senha"
                         placeholder="Digite uma senha segura"
                         isPassword
-                        onChangeText={setPassword} //onChangeText={(value) => setPassword(value)}
+                        onChangeText={setPassword}
                         value={password}
                     />
                 </View>
                 <View className="flex-1 justify-center mb-10">
                     <Button
                         label="Acessar"
-                        funcao={ProcessarLogin} 
+                        funcao={ProcessarLogin}
                     />
                 </View>
                 <Pressable
